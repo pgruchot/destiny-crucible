@@ -10,6 +10,8 @@ server.use(bodyParser.urlencoded({ extended: true }));
 
 server.use(morgan("dev"));
 
+require("./routes")(server);
+
 server.listen(5000, () => {
   console.log("server running at " + 5000);
 });
