@@ -43,24 +43,28 @@ module.exports = (server) => {
       });
     } catch (error) {
       console.error(error);
+      res.json(error);
     }
   });
-  server.post("/profile/character", async (req, ers) => {
+  server.post("/profile/character", async (req, res) => {
     try {
       const { membershipType, membershipId, characterId, mode } = req.body;
-      const activityListFromAPi = await APITools.searchForActivities(
+      const activityListFromAPI = await APITools.searchForActivities(
         membershipType,
         membershipId,
         characterId,
         mode
       );
-      console.log(activityListFromAPi);
+      console.log(activityListFromAPI.length);
+      res.json(activityListFromAPI);
     } catch (error) {
       console.error(error);
+      res.json(error);
     }
   });
 };
 
+//25 last activities
 //titan: 0
 //warlock: 2
 //hunter: 1
