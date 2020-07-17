@@ -16,7 +16,7 @@ export default function ProfileContextProvider(props) {
           setName(name);
         },
         membershipType,
-        setName: (membershipType) => {
+        setMembershipType: (membershipType) => {
           setMembershipType(membershipType);
         },
         membershipId,

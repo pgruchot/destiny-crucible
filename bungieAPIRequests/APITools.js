@@ -24,8 +24,7 @@ module.exports = {
       requestPromise(
         returnRequestOptions(`SearchDestinyPlayer/${membershipType}/${name}/`)
       ).then((APIResponse) => {
-        if (!APIResponse.Response[0])
-          reject(Error("No user with such username/platform"));
+        if (!APIResponse.Response[0]) reject({ Error: "No such user" });
         else resolve({ membershipId: APIResponse.Response[0].membershipId });
       });
     });
@@ -37,7 +36,7 @@ module.exports = {
           `${membershipType}/Profile/${membershipId}/?components=100`
         )
       ).then((APIResponse) => {
-        if (!APIResponse.Response.profile) reject(Error("No profile"));
+        if (!APIResponse.Response.profile) reject({ Error: "No profile" });
         else resolve([...APIResponse.Response.profile.data.characterIds]);
       });
     });
@@ -49,7 +48,7 @@ module.exports = {
           `${membershipType}/Profile/${membershipId}/Character/${characterId}/?components=200`
         )
       ).then((APIResponse) => {
-        if (!APIResponse.Response.character) reject(Error("No character"));
+        if (!APIResponse.Response.character) reject({ Error: "No character" });
         else
           resolve({
             class: classToString(APIResponse.Response.character.data.classType),
@@ -68,7 +67,8 @@ module.exports = {
           `${membershipType}/Account/${membershipId}/Character/${characterId}/Stats/Activities/?mode=${mode}`
         )
       ).then((APIResponse) => {
-        if (!APIResponse.Response.activities[0]) reject(Error("No match data"));
+        if (!APIResponse.Response.activities[0])
+          reject({ Error: "No match data" });
         else
           resolve(
             APIResponse.Response.activities.map((activity) => activity.values)

@@ -41,9 +41,9 @@ module.exports = (server) => {
         membershipId: membershipIdFromAPI.membershipId,
         characterInfo,
       });
-    } catch (error) {
-      console.error(error);
-      res.json(error);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
     }
   });
   server.post("/profile/character", async (req, res) => {
@@ -57,9 +57,9 @@ module.exports = (server) => {
       );
       console.log(activityListFromAPI.length);
       res.json(activityListFromAPI);
-    } catch (error) {
-      console.error(error);
-      res.json(error);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
     }
   });
 };
