@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./App.css";
-import ProfileContextProvider from "./contexts/Profile";
+
 import Search from "./components/Search";
+import { ProfileContext } from "./contexts/Profile";
+import Characters from "./components/Characters";
 function App() {
+  const { characterInfo } = useContext(ProfileContext);
+
+  const renderCharacters = characterInfo ? <Characters /> : null;
   return (
     <div className="App">
-      <ProfileContextProvider>
-        <Search />
-      </ProfileContextProvider>
+      <Search />
+      <div className="content-container">{renderCharacters}</div>
     </div>
   );
 }

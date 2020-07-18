@@ -43,7 +43,7 @@ export default function Search() {
             <option value="3">STEAM</option>
           </select>
           <input type="text" onChange={(e) => setLocalName(e.target.value)} />
-          <button type="submit">></button>
+          <button type="submit">{">"}</button>
         </form>
         {error ? (
           <div className="search-container-error">
