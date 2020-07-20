@@ -1,17 +1,19 @@
 import React, { useContext } from "react";
 import "./App.css";
-
 import Search from "./components/Search";
-import { ProfileContext } from "./contexts/Profile";
 import Characters from "./components/Characters";
-function App() {
-  const { characterInfo } = useContext(ProfileContext);
+import RenderCharts from "./components/RenderCharts";
+import { ProfileContext } from "./contexts/Profile";
 
-  const renderCharacters = characterInfo ? <Characters /> : null;
+function App() {
+  const { characterInfo, currentCharacter } = useContext(ProfileContext);
   return (
     <div className="App">
       <Search />
-      <div className="content-container">{renderCharacters}</div>
+      <div className="content-container">
+        {characterInfo ? <Characters /> : null}
+        {currentCharacter ? <RenderCharts /> : null}
+      </div>
     </div>
   );
 }

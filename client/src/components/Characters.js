@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import Axios from "axios";
 import { ProfileContext } from "../contexts/Profile";
-import { urlencoded } from "body-parser";
-
 export default function Characters() {
-  const { membershiptype, membershipId, characterInfo } = useContext(
-    ProfileContext
-  );
+  const {
+    membershiptype,
+    membershipId,
+    characterInfo,
+    setCurrentCharacter,
+  } = useContext(ProfileContext);
   const returnBackgroundImg = (character) => {
     return {
       backgroundImage: `url(https://www.bungie.net${character.emblemBackgroundPath})`,
@@ -14,6 +15,7 @@ export default function Characters() {
   };
   const characterList = characterInfo.map((character, index) => (
     <button
+      onClick={() => setCurrentCharacter(character.characterId)}
       style={returnBackgroundImg(character)}
       className="content-container-box-character"
       key={index}

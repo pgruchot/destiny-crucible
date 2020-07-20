@@ -7,6 +7,8 @@ export default function ProfileContextProvider(props) {
   const [membershipType, setMembershipType] = useState(2);
   const [membershipId, setMembershipId] = useState("");
   const [characterInfo, setCharacterInfo] = useState([]);
+  const [currentCharacter, setCurrentCharacter] = useState("");
+  const [currentCharacterData, setCurrentCharacterData] = useState([]);
 
   return (
     <ProfileContext.Provider
@@ -26,6 +28,14 @@ export default function ProfileContextProvider(props) {
         characterInfo,
         setCharacterInfo: (characterInfo) => {
           setCharacterInfo(characterInfo);
+        },
+        currentCharacter,
+        setCurrentCharacter: (currentCharacter) => {
+          setCurrentCharacter(currentCharacter);
+        },
+        currentCharacterData,
+        setCurrentCharacterData: (currentCharacterData) => {
+          setCurrentCharacterData(currentCharacterData);
         },
       }}
     >
