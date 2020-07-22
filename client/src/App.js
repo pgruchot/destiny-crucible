@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./App.css";
+import "./App.scss";
 import Search from "./components/Search";
 import Characters from "./components/Characters";
 import RenderCharts from "./components/RenderCharts";

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import Axios from "axios";
 import { ProfileContext } from "../contexts/Profile";
-
+import Logo from "./Logo";
 export default function Search() {
   const [localName, setLocalName] = useState("");
   const [localMembershipType, setLocalMembershipType] = useState("2");
@@ -11,6 +11,7 @@ export default function Search() {
     setMembershipType,
     setMembershipId,
     setCharacterInfo,
+    resetCharacter,
   } = useContext(ProfileContext);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,10 +21,12 @@ export default function Search() {
     }).then((res) => {
       if (!res.data.Error) {
         console.log(res);
+        resetCharacter();
         setName(res.data.name);
         setMembershipType(res.data.membershipType);
         setMembershipId(res.data.membershipId);
         setCharacterInfo(res.data.characterInfo);
+        setError(null);
       } else setError(res.data.Error);
     });
   };
@@ -31,7 +34,7 @@ export default function Search() {
   return (
     <div className="search-container">
       <div className="search-container-cover">
-        <h2 className="search-container-title">destiny_charts</h2>
+        <Logo />
         <form onSubmit={handleSubmit} className="search-form">
           <select
             onChange={(e) => setLocalMembershipType(e.target.value)}
@@ -42,7 +45,11 @@ export default function Search() {
             <option value="2">PS4</option>
             <option value="3">STEAM</option>
           </select>
-          <input type="text" onChange={(e) => setLocalName(e.target.value)} />
+          <input
+            type="text"
+            onChange={(e) => setLocalName(e.target.value)}
+            placeholder="Type in guardian name..."
+          />
           <button type="submit">{">"}</button>
         </form>
         {error ? (

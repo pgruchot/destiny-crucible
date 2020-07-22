@@ -44,7 +44,7 @@ export default function RenderCharts() {
   };
   const matchData = currentCharacterData[0]
     ? currentCharacterData.map((stat, index) => (
-        <div className="content-container-box" key={index}>
+        <div className="content-container-chart" key={index}>
           <Chart stat={stat} />
         </div>
       ))

@@ -31,24 +31,29 @@ export default function Charts(props) {
   const renderLineChart = (
     <LineChart
       className="chart-content"
-      width={600}
+      width={900}
       height={300}
       data={ComposeData(props.stat)}
     >
-      <Line type="monotone" dataKey="y" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <XAxis dataKey="x" />
+      <Line type="monotone" dataKey="y" stroke="#d80032" />
+      <CartesianGrid stroke="#262b24" strokeDasharray="5 5" />
+      <XAxis dataKey="x" stroke="#d1ddb9" />
       <Tooltip
-        wrapperStyle={{ width: "auto", backgroundColor: "#fff" }}
+        wrapperStyle={{
+          width: "auto",
+          backgroundColor: "#fff",
+          color: "#ef233c",
+          padding: "10px",
+        }}
         content={<CustomTooltip />}
       />
-      <YAxis />
+      <YAxis stroke="#d1ddb9" />
     </LineChart>
   );
   return (
     <Fragment>
       <h2 className="chart-title">{props.stat.name}</h2>
-      {renderLineChart}
+      <div className="chart-container">{renderLineChart}</div>
     </Fragment>
   );
 }
