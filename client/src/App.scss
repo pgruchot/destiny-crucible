@@ -33,6 +33,7 @@ body {
   height: 40px;
   vertical-align: text-bottom;
 }
+
 .App {
   width: 100%;
   height: 100vh;
@@ -120,6 +121,9 @@ body {
       font-size: 10px;
       outline: none;
     }
+    &:focus {
+      outline: none;
+    }
   }
   & button {
     height: 100px;
@@ -128,6 +132,10 @@ body {
     background-color: $first;
     border: none;
     color: $third;
+    border: 2px solid rgba(239, 35, 60, 0);
+    &:focus {
+      outline: none;
+    }
   }
   & input {
     height: 100px;
@@ -140,9 +148,71 @@ body {
     &::placeholder {
       color: $second;
     }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.animate-button {
+  animation: buttonBorder 2s infinite;
+}
+@keyframes buttonBorder {
+  0% {
+    border-left: 2px solid rgba(239, 35, 60, 0);
+  }
+  12% {
+    border-left: 2px solid rgba(239, 35, 60, 1);
+  }
+  25% {
+    border-left: 2px solid rgba(239, 35, 60, 0);
+    border-top: 2px solid rgba(239, 35, 60, 0);
+  }
+  37% {
+    border-top: 2px solid rgba(239, 35, 60, 1);
+  }
+  50% {
+    border-top: 2px solid rgba(173, 106, 114, 0);
+    border-right: 2px solid rgba(173, 106, 114, 0);
+  }
+  62% {
+    border-right: 2px solid rgba(239, 35, 60, 1);
+  }
+  75% {
+    border-right: 2px solid rgba(173, 106, 114, 0);
+    border-bottom: 2px solid rgba(173, 106, 114, 0);
+  }
+  87% {
+    border-bottom: 2px solid rgba(239, 35, 60, 1);
+  }
+  100% {
+    border-bottom: 2px solid rgba(173, 106, 114, 0);
   }
 }
 
+.loaded-indicator {
+  width: 100px;
+  height: 100px;
+  margin: 10rem auto;
+  transform: rotateZ(-45deg);
+  animation: indicatorBorder 2s infinite;
+}
+@keyframes indicatorBorder {
+  0% {
+    border-left: 2px solid rgba(239, 35, 60, 0);
+    border-bottom: 2px solid rgba(239, 35, 60, 0);
+    margin-top: 10rem;
+  }
+  50% {
+    border-left: 2px solid rgba(239, 35, 60, 1);
+    border-bottom: 2px solid rgba(239, 35, 60, 1);
+    margin-top: 11rem;
+  }
+  100% {
+    border-left: 2px solid rgba(239, 35, 60, 0);
+    border-bottom: 2px solid rgba(239, 35, 60, 0);
+    margin-top: 10rem;
+  }
+}
 //Character-content
 .content-container {
   background-color: $first;
@@ -166,6 +236,7 @@ body {
       color: $third;
     }
   }
+  //Chart container
   &-chart {
     width: 100%;
     text-align: center;
@@ -193,6 +264,58 @@ body {
     }
     .chart-content {
       color: $third;
+    }
+  }
+}
+//media queries for big screens
+@media (min-width: 900px) {
+  .search-container {
+    width: 300px;
+    margin: 0;
+    &-error {
+      width: 300px;
+    }
+  }
+  .logo-container {
+    width: 100%;
+    height: 70px;
+    h2 {
+      letter-spacing: 2px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    &-svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .search-form {
+    margin-top: 70px;
+    background-color: $first;
+    width: 100%;
+    height: 80px;
+    & select {
+      height: 70px;
+      width: 15%;
+      font-size: 15px;
+    }
+    & button {
+      height: 70px;
+      font-size: 25px;
+    }
+    & input {
+      height: 70px;
+      font-size: 15px;
+    }
+  }
+  .content-container {
+    width: auto;
+    margin: 0 auto;
+    &-box {
+      width: 600px;
+    }
+    &-chart {
+      width: 600px;
     }
   }
 }

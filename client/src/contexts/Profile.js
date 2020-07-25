@@ -38,6 +38,7 @@ export default function ProfileContextProvider(props) {
           setCurrentCharacterData(currentCharacterData);
         },
         resetCharacter: () => {
+          setCharacterInfo([]);
           setCurrentCharacter("");
           setCurrentCharacterData([]);
         },

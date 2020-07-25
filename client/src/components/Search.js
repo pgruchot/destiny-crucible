@@ -6,28 +6,35 @@ export default function Search() {
   const [localName, setLocalName] = useState("");
   const [localMembershipType, setLocalMembershipType] = useState("2");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const {
     setName,
     setMembershipType,
     setMembershipId,
     setCharacterInfo,
     resetCharacter,
+    characterInfo,
   } = useContext(ProfileContext);
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    resetCharacter();
     Axios.post("/profile", {
       membershipType: localMembershipType,
       name: localName,
     }).then((res) => {
       if (!res.data.Error) {
         console.log(res);
-        resetCharacter();
         setName(res.data.name);
         setMembershipType(res.data.membershipType);
         setMembershipId(res.data.membershipId);
         setCharacterInfo(res.data.characterInfo);
         setError(null);
-      } else setError(res.data.Error);
+        setLoading(false);
+      } else {
+        setError(res.data.Error);
+        setLoading(false);
+      }
     });
   };
 
@@ -50,13 +57,16 @@ export default function Search() {
             onChange={(e) => setLocalName(e.target.value)}
             placeholder="Type in guardian name..."
           />
-          <button type="submit">{">"}</button>
+          <button className={loading ? "animate-button" : null} type="submit">
+            {">"}
+          </button>
         </form>
         {error ? (
           <div className="search-container-error">
             <p>{error}</p>
           </div>
         ) : null}
+        {characterInfo[0] ? <div className="loaded-indicator"></div> : null}
       </div>
     </div>
   );
