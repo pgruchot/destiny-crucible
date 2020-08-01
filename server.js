@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const morgan = require("morgan");
+//const morgan = require("morgan");
 const path = require("path");
 
 const port = process.env.PORT || 5000;
@@ -9,7 +9,7 @@ const server = express();
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 
-server.use(morgan("dev"));
+//server.use(morgan("dev"));
 
 require("./routes")(server);
 
