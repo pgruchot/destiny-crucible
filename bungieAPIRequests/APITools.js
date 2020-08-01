@@ -1,12 +1,12 @@
 const requestPromise = require("request-promise");
-const keys = require("../config/keys");
+const key = process.env.BUNGIE_KEY;
 
 const returnRequestOptions = (uriParams) => {
   return {
     method: "GET",
     uri: "https://www.bungie.net/Platform/Destiny2/" + uriParams,
     headers: {
-      "X-API-KEY": keys.bungieAPI.APIKey,
+      "X-API-KEY": key,
     },
     json: true,
   };
