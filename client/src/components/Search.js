@@ -24,7 +24,7 @@ export default function Search() {
       name: localName,
     }).then((res) => {
       if (!res.data.Error) {
-        console.log(res);
+        //console.log(res);
         setName(res.data.name);
         setMembershipType(res.data.membershipType);
         setMembershipId(res.data.membershipId);

@@ -11,7 +11,7 @@ import {
 export default function Charts(props) {
   //console.log(props);
   const ComposeData = (data) => {
-    console.log(data);
+    //console.log(data);
     return data.values.map((value, index) => {
       return {
         x: index + 1,

@@ -18,7 +18,7 @@ export default function RenderCharts() {
       mode: "70",
     }).then((res) => {
       setCurrentCharacterData(orderData(res.data));
-      console.log(res.data);
+      //console.log(res.data);
     });
   }, [currentCharacter]);
   const orderData = (data) => {

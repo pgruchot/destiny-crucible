@@ -1,13 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
-import Axios from "axios";
+import React, { useContext } from "react";
 import { ProfileContext } from "../contexts/Profile";
 export default function Characters() {
-  const {
-    membershiptype,
-    membershipId,
-    characterInfo,
-    setCurrentCharacter,
-  } = useContext(ProfileContext);
+  const { characterInfo, setCurrentCharacter } = useContext(ProfileContext);
   const returnBackgroundImg = (character) => {
     return {
       backgroundImage: `url(https://www.bungie.net${character.emblemBackgroundPath})`,
